@@ -1,21 +1,29 @@
 package wayne.com.javadontliekotlin
 
-import android.arch.persistence.room.Room
+import android.app.Application
+import android.content.Context
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class GameModule(val app: JavaDontLieApp) {
+class GameModule(private val app: Application) {
 
-    private val DATABASE_NAME = "GamesDataBase"
+    @Provides @Singleton fun provideAppContext(): Context {
+        return app
+    }
 
-    @Provides @Singleton fun provideApp() = app
-
-    @Provides @Singleton fun provideDatabase(app: JavaDontLieApp): GamesDataBase {
+    @Provides @Singleton fun provideGameDatabase(app: Context) : GamesDataBase {
         return Room.databaseBuilder(
             app,
-            GamesDataBase::class.java, DATABASE_NAME
-        ).build()
+            GamesDataBase::class.java,
+            "GameDatabase")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides @Singleton fun provideRespository(gamesDataBase: GamesDataBase) :GameRepository {
+        return GameRepository(gamesDataBase)
     }
 }
