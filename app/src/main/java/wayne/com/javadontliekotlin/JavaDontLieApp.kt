@@ -4,14 +4,10 @@ import android.app.Application
 
 class JavaDontLieApp : Application() {
 
-    val component: GameComponent by lazy {
-        DaggerGameComponent
-            .builder()
-            .build()
-    }
+    lateinit var component: GameComponent
 
     override fun onCreate() {
         super.onCreate()
-        component.inject(this)
+        component = DaggerGameComponent.builder().gameModule(GameModule(this)).build()
     }
 }

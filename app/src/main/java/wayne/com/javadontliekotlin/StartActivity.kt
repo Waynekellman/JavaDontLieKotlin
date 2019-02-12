@@ -1,33 +1,28 @@
 package wayne.com.javadontliekotlin
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_start.*
 import javax.inject.Inject
 
 class StartActivity : AppCompatActivity() {
 
-    @Inject lateinit var gamesDataBase: GamesDataBase
+    @Inject lateinit var startViewModel: StartViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+        component.inject(this)
 
         new_game.setOnClickListener {
-            if (new_game_name.text.isNotEmpty() && money_amount_start.text.isNotEmpty()){
+            if (new_game_name.text.isNotEmpty() && money_amount_start.text.isNotEmpty()) {
 
-                Observable.fromCallable{
-                    var game = Game()
-                    game.gameName = new_game_name.text.toString()
-                    game.amount = money_amount_start.text.toString().toInt()
-                    gamesDataBase.gamesDao().insert(game)
-                }.subscribeOn(Schedulers.io())
-                    .subscribe()
+                val game = Game()
+                game.gameName = new_game_name.text.toString()
+                game.amount = money_amount_start.text.toString().toInt()
+                startViewModel.insert(game)
 
             }
         }
-
     }
 }

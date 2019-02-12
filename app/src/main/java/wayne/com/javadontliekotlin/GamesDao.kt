@@ -1,21 +1,29 @@
 package wayne.com.javadontliekotlin
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import android.arch.persistence.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
+
 
 @Dao
 interface GamesDao {
 
-    @Query("SELECT * from Games")
-    fun getAll() : List<Game>
+    @Query("SELECT * from Games ORDER BY id DESC")
+    fun getAll() : LiveData<List<Game>>
+
+    @Query("SELECT * from Games WHERE id IN (:id)")
+    fun getGameById(id: Int) : Game
 
     @Insert(onConflict = REPLACE)
-    fun insert(game: Game)
+    fun insert(game: Game) : Long
+
+    @Update
+    fun update(game: Game)
 
     @Delete
     fun delete(game: Game)
+
+    @Query("DELETE FROM Games")
+    fun deleteAllGames()
 
 }
