@@ -1,4 +1,4 @@
-package wayne.com.javadontliekotlin
+package wayne.com.javadontliekotlin.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

@@ -1,4 +1,4 @@
-package wayne.com.javadontliekotlin
+package wayne.com.javadontliekotlin.ui
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import wayne.com.javadontliekotlin.R
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -13,17 +14,14 @@ import androidx.fragment.app.Fragment
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MoneyFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ *
+ */
+class LogFragment : Fragment() {
 
-    companion object {
-
-        fun newInstance(gameId: Int): MoneyFragment {
-            val bundle: Bundle = Bundle.EMPTY
-            bundle.putInt("GameId", gameId)
-            val moneyFragment = MoneyFragment()
-            moneyFragment.arguments = bundle
-            return moneyFragment
-        }
+    fun newInstance(): LogFragment {
+        return LogFragment()
     }
 
     override fun onCreateView(
@@ -31,7 +29,7 @@ class MoneyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_money, container, false)
+        return inflater.inflate(R.layout.fragment_log, container, false)
     }
 
 

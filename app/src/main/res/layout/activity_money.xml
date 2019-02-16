@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MoneyActivity"
+        tools:context=".ui.MoneyActivity"
         android:orientation="vertical"
         android:background="#7c42bd"
         android:descendantFocusability="beforeDescendants"
@@ -62,7 +62,7 @@
 
             <fragment
                     android:id="@+id/log_fragment"
-                    class="wayne.com.javadontliekotlin.LogFragment"
+                    class="wayne.com.javadontliekotlin.ui.LogFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
         </FrameLayout>

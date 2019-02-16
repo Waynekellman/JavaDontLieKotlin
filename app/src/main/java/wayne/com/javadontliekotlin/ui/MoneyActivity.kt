@@ -1,7 +1,8 @@
-package wayne.com.javadontliekotlin
+package wayne.com.javadontliekotlin.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import wayne.com.javadontliekotlin.R
 
 class MoneyActivity : AppCompatActivity() {
 

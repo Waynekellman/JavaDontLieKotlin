@@ -35,13 +35,13 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$androidx_legacy_version"
     implementation "androidx.appcompat:appcompat:$androidx_appcompact"
     implementation "androidx.constraintlayout:constraintlayout:$androidx_constraint_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
-    //dagger 2 dependencies
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    //Kodein Injection dependencies
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
 
     //Room dependencies
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_viewmodel_version"
     implementation "androidx.room:room-runtime:$androidx_room_version"
     kapt "androidx.room:room-compiler:$androidx_room_version"
 

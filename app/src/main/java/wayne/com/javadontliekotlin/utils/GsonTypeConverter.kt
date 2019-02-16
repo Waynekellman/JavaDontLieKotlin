@@ -1,8 +1,9 @@
-package wayne.com.javadontliekotlin
+package wayne.com.javadontliekotlin.utils
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import wayne.com.javadontliekotlin.data.db.Game
 
 class GsonTypeConverter {
 
