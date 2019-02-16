@@ -1,30 +1,39 @@
 package wayne.com.javadontliekotlin.data.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import wayne.com.javadontliekotlin.data.db.Game
 import wayne.com.javadontliekotlin.data.db.GamesDao
 
 
 class GameRepository(private val gamesDao: GamesDao): IGameRepository {
 
-
-    private val games = MutableLiveData<List<Game>>()
+    private val disposables = CompositeDisposable()
 
     override fun insert(game: Game) {
-//        doAsync { gamesDao.insert(game) }
+        disposables.add(Observable.just(game)
+            .subscribeOn(Schedulers.io())
+            .subscribe { game -> gamesDao.insert(game) })
     }
 
     override fun update(game: Game) {
-//        doAsync { gamesDao.update(game) }
+        disposables.add(Observable.just(game)
+            .subscribeOn(Schedulers.io())
+            .subscribe { game -> gamesDao.update(game) })
     }
 
     override fun delete(game: Game) {
-//        doAsync { gamesDao.delete(game) }
+        disposables.add(Observable.just(game)
+            .subscribeOn(Schedulers.io())
+            .subscribe { game -> gamesDao.delete(game) })
     }
 
     override fun deleteAllGames() {
-//        doAsync { gamesDao.deleteAllGames() }
+        disposables.add(Observable.just(gamesDao)
+            .subscribeOn(Schedulers.io())
+            .subscribe {  gamesDao.deleteAllGames() })
     }
     override fun getAllGames(): LiveData<List<Game>> {
         return gamesDao.getAll()
