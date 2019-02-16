@@ -1,13 +1,14 @@
-package wayne.com.javadontliekotlin
+package wayne.com.javadontliekotlin.ui
 
 import io.reactivex.ObservableSource
 import io.reactivex.Observer
 import io.reactivex.functions.Consumer
-import javax.inject.Inject
+import wayne.com.javadontliekotlin.utils.SetupGame
+import wayne.com.javadontliekotlin.data.db.Game
+import wayne.com.javadontliekotlin.data.repository.GameRepository
 
-class MoneyViewModel @Inject constructor(private val repository: GameRepository): Consumer<SetupGame>, ObservableSource<StartViewModel> {
+class MoneyViewModel constructor(private val repository: GameRepository): Consumer<SetupGame>, ObservableSource<StartViewModel> {
 
-    @Inject lateinit var startViewModel: StartViewModel
 
     override fun accept(t: SetupGame?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

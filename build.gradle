@@ -12,10 +12,10 @@ buildscript {
     ext.androidx_appcompact = '1.1.0-alpha02'
     ext.androidx_constraint_version = '2.0.0-alpha3'
     ext.androidx_room_version = '2.1.0-alpha04'
-    ext.androidx_viewmodel_version = '2.0.0'
+    ext.lifecycle_version = '2.1.0-alpha02'
     ext.androidx_recyclerview_verions = '1.1.0-alpha02'
     ext.androidx_cardview_version = '1.0.0'
-    ext.dagger_version = '2.21'
+    ext.kodein_version = '6.1.0'
     ext.text_espresso_core = '3.1.1'
     ext.text_runner = '1.1.1'
     repositories {
