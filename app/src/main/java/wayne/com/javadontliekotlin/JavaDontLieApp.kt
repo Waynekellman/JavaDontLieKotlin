@@ -13,14 +13,10 @@ import wayne.com.javadontliekotlin.data.db.GamesDataBase
 import wayne.com.javadontliekotlin.data.db.IGamesDatabase
 import wayne.com.javadontliekotlin.data.repository.GameRepository
 import wayne.com.javadontliekotlin.data.repository.IGameRepository
-import wayne.com.javadontliekotlin.ui.StartViewModel
-import wayne.com.javadontliekotlin.ui.StartViewModelFactory
+import wayne.com.javadontliekotlin.ui.moneyUi.MoneyViewModelFactory
+import wayne.com.javadontliekotlin.ui.startUi.StartViewModel
+import wayne.com.javadontliekotlin.ui.startUi.StartViewModelFactory
 
-val viewModelModul = Kodein.Module(name = "viewModelModule") {
-    bind<StartViewModel>(tag = StartViewModel::class.java.simpleName) with provider {
-        StartViewModel(instance())
-    }
-}
 
 class JavaDontLieApp : Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
@@ -32,5 +28,6 @@ class JavaDontLieApp : Application(), KodeinAware {
         bind<GamesDao>() with singleton { instance<IGamesDatabase>().gamesDao() }
         bind<IGameRepository>() with singleton { GameRepository(instance()) }
         bind() from provider { StartViewModelFactory(instance()) }
+        bind() from provider { MoneyViewModelFactory(instance()) }
     }
 }
