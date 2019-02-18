@@ -3,6 +3,9 @@ package wayne.com.javadontliekotlin.data.db
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
+import io.reactivex.Completable
+import io.reactivex.Flowable
+import io.reactivex.Observable
 
 
 @Dao
@@ -12,16 +15,16 @@ interface GamesDao {
     fun getAll() : LiveData<List<Game>>
 
     @Query("SELECT * from Games WHERE id IN (:id)")
-    fun getGameById(id: Int) : Game
+    fun getGameById(id: Long) : Flowable<Game>
 
     @Insert(onConflict = REPLACE)
-    fun insert(game: Game) : Long
+    fun insert(game: Game) : Completable
 
     @Update
-    fun update(game: Game)
+    fun update(game: Game) : Completable
 
     @Delete
-    fun delete(game: Game)
+    fun delete(game: Game) : Completable
 
     @Query("DELETE FROM Games")
     fun deleteAllGames()

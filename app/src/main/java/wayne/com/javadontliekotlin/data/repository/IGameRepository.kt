@@ -9,4 +9,5 @@ interface IGameRepository {
     fun delete(game: Game)
     fun deleteAllGames()
     fun getAllGames(): LiveData<List<Game>>
+    fun getGame(id: Long, callback: (Game) -> Unit)
 }

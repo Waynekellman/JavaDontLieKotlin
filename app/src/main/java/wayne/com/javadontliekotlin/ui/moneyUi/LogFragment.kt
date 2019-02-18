@@ -1,4 +1,4 @@
-package wayne.com.javadontliekotlin.ui
+package wayne.com.javadontliekotlin.ui.moneyUi
 
 
 import android.os.Bundle
