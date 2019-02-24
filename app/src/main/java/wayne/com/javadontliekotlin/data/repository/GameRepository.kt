@@ -30,12 +30,6 @@ class GameRepository(private val gamesDao: GamesDao): IGameRepository {
             .subscribe())
     }
 
-    override fun update(game: Game) {
-        disposables.add(gamesDao.update(game)
-            .subscribeOn(Schedulers.io())
-            .subscribe())
-    }
-
     override fun delete(game: Game) {
         disposables.add(gamesDao.delete(game)
             .subscribeOn(Schedulers.io())

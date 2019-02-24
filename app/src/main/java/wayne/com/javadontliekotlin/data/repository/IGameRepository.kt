@@ -5,7 +5,6 @@ import wayne.com.javadontliekotlin.data.db.Game
 
 interface IGameRepository {
     fun insert(game: Game)
-    fun update(game: Game)
     fun delete(game: Game)
     fun deleteAllGames()
     fun getAllGames(): LiveData<List<Game>>
