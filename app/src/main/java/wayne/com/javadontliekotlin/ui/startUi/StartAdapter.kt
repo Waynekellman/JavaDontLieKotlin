@@ -9,8 +9,9 @@ import kotlinx.android.synthetic.main.game_item.view.*
 import wayne.com.javadontliekotlin.R
 import wayne.com.javadontliekotlin.data.db.Game
 import wayne.com.javadontliekotlin.ui.moneyUi.MoneyActivity
+import wayne.com.javadontliekotlin.utils.IAdapter
 
-class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>() {
+class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>(), IAdapter {
 
     private val games = ArrayList<Game>()
 
@@ -35,7 +36,7 @@ class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>() {
     }
 
 
-    fun swapItems(fromPosition: Int, toPosition: Int) {
+    override fun swapItems(fromPosition: Int, toPosition: Int) {
         if (fromPosition < toPosition) {
             for (i in fromPosition until toPosition) {
                 games[i] = games.set(i+1, games[i])
@@ -47,6 +48,10 @@ class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>() {
         }
 
         notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun getGamesAt(position: Int): Game {
+        return games[position]
     }
 
     fun setList(gamesList: List<Game>) {
