@@ -55,7 +55,7 @@ class StartActivity : AppCompatActivity(), KodeinAware {
             adapter.setList(gamesList)
         })
 
-        val callback = DragManageAdapter(adapter, this, 0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
+        val callback = DragManageAdapter(adapter, this, 0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT), viewModel)
         val helper = ItemTouchHelper(callback)
         helper.attachToRecyclerView(recyclerView)
     }
