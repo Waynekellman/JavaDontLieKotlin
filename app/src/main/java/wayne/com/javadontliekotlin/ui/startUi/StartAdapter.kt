@@ -34,7 +34,23 @@ class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>() {
 
     }
 
+
+    fun swapItems(fromPosition: Int, toPosition: Int) {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition until toPosition) {
+                games[i] = games.set(i+1, games[i])
+            }
+        } else {
+            for (i in fromPosition..toPosition + 1) {
+                games[i] = games.set(i-1, games[i])
+            }
+        }
+
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
     fun setList(gamesList: List<Game>) {
+        //TODO Optimize notifying the ui of list changes
         games.clear()
         games.addAll(gamesList)
         notifyDataSetChanged()
