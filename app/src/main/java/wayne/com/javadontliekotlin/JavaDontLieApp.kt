@@ -18,6 +18,7 @@ import wayne.com.javadontliekotlin.ui.startUi.StartViewModel
 import wayne.com.javadontliekotlin.ui.startUi.StartViewModelFactory
 
 
+@Suppress("unused")
 class JavaDontLieApp : Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         bind<IGamesDatabase>() with singleton {

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_start.*
 import org.kodein.di.Kodein
@@ -16,6 +17,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
 import wayne.com.javadontliekotlin.R
 import wayne.com.javadontliekotlin.ui.moneyUi.MoneyActivity
+import wayne.com.javadontliekotlin.utils.DragManageAdapter
 
 class StartActivity : AppCompatActivity(), KodeinAware {
     override val kodein: Kodein by lazy { (applicationContext as KodeinAware).kodein }
@@ -39,6 +41,7 @@ class StartActivity : AppCompatActivity(), KodeinAware {
     }
 
     private fun initializeUI() {
+        //TODO add swipe to delete feature
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -51,6 +54,10 @@ class StartActivity : AppCompatActivity(), KodeinAware {
             }
             adapter.setList(gamesList)
         })
+
+        val callback = DragManageAdapter(adapter, this, 0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
+        val helper = ItemTouchHelper(callback)
+        helper.attachToRecyclerView(recyclerView)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

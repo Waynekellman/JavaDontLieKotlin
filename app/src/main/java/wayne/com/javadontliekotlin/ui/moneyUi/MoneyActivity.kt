@@ -9,6 +9,9 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
 import wayne.com.javadontliekotlin.R
 
+//TODO create keyboard for numbers
+//TODO create log screen
+
 class MoneyActivity : AppCompatActivity() , KodeinAware {
     override val kodein: Kodein by lazy { (applicationContext as KodeinAware).kodein }
     private val viewModelFactory: MoneyViewModelFactory by instance()
@@ -22,9 +25,17 @@ class MoneyActivity : AppCompatActivity() , KodeinAware {
 
         val gameId = intent.getLongExtra("gameId", -1)
         viewModel.getGame(gameId) { game -> money_amount.text = game.amount.toString() }
-        amount_button.setOnClickListener {
+
+        //TODO: have Add and subtract buttons
+        addition.setOnClickListener {
             if (amount_text.text.isNotEmpty()) {
-                viewModel.calculate(amount_text.text.toString().toLong())
+                viewModel.calculate(amount_text.text.toString().toLong().unaryPlus())
+                updateUI()
+            }
+        }
+        subtract.setOnClickListener {
+            if (amount_text.text.isNotEmpty()) {
+                viewModel.calculate(amount_text.text.toString().toLong().unaryMinus())
                 updateUI()
             }
         }
