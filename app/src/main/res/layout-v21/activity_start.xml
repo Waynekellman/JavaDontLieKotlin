@@ -23,14 +23,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="#12005e"
-                android:elevation="10dp" tools:ignore="UnusedAttribute">
+                android:elevation="10dp">
             <Button
                     android:id="@+id/new_game"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/new_game"
                     android:elevation="10dp"
-                    android:layout_weight="1" tools:ignore="UnusedAttribute"/>
+                    android:layout_weight="1"/>
             <EditText
                     android:id="@+id/new_game_name"
                     android:layout_width="0dp"
@@ -43,7 +43,7 @@
                     android:maxLines="1"
                     android:elevation="10dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp" tools:ignore="Autofill,TextFields,UnusedAttribute"/>
+                    android:layout_marginEnd="5dp" tools:ignore="Autofill,TextFields"/>
             <EditText
                     android:id="@+id/money_amount_start"
                     android:layout_width="0dp"
@@ -57,7 +57,7 @@
                     android:elevation="10dp"
                     android:layout_weight="2"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp" tools:ignore="Autofill,UnusedAttribute"/>
+                    android:layout_marginEnd="5dp" tools:ignore="Autofill"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

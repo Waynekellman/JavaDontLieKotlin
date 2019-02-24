@@ -20,9 +20,6 @@ interface GamesDao {
     @Insert(onConflict = REPLACE)
     fun insert(game: Game) : Completable
 
-    @Update
-    fun update(game: Game) : Completable
-
     @Delete
     fun delete(game: Game) : Completable
 
