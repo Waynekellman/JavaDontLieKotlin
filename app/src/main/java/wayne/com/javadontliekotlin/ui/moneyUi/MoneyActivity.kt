@@ -26,7 +26,6 @@ class MoneyActivity : AppCompatActivity() , KodeinAware {
         val gameId = intent.getLongExtra("gameId", -1)
         viewModel.getGame(gameId) { game -> money_amount.text = game.amount.toString() }
 
-        //TODO: have Add and subtract buttons
         addition.setOnClickListener {
             if (amount_text.text.isNotEmpty()) {
                 viewModel.calculate(amount_text.text.toString().toLong().unaryPlus())

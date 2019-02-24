@@ -9,11 +9,9 @@ class StartViewModel(private val repository: IGameRepository) : ViewModel() {
 
     var newGame: Boolean = false
 
-    fun insert(game: Game) = repository.insert(game)
+    private fun insert(game: Game) = repository.insert(game)
 
     fun delete(game: Game) = repository.delete(game)
-
-    fun update(game: Game) = repository.update(game)
 
     fun deleteAllGames() = repository.deleteAllGames()
 

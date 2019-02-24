@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.game_item.view.*
 import wayne.com.javadontliekotlin.R
@@ -24,8 +25,8 @@ class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>(), IAdapte
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        holder.name?.text = games[position].gameName
-        holder.amount?.text = games[position].amount.toString()
+        holder.name.text = games[position].gameName
+        holder.amount.text = games[position].amount.toString()
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MoneyActivity::class.java)
             intent.putExtra("gameId", games[position].id)
@@ -55,15 +56,14 @@ class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>(), IAdapte
     }
 
     fun setList(gamesList: List<Game>) {
-        //TODO Optimize notifying the ui of list changes
         games.clear()
         games.addAll(gamesList)
         notifyDataSetChanged()
     }
 
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name = itemView.game_name
-        val amount = itemView.game_amount
+        val name: TextView = itemView.game_name
+        val amount: TextView = itemView.game_amount
     }
 
 }

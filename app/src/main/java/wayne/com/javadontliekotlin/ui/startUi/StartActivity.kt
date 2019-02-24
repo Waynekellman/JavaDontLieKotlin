@@ -41,7 +41,6 @@ class StartActivity : AppCompatActivity(), KodeinAware {
     }
 
     private fun initializeUI() {
-        //TODO add swipe to delete feature
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -77,17 +76,17 @@ class StartActivity : AppCompatActivity(), KodeinAware {
         }
     }
 
-    fun deleteAllGames() {
+    private fun deleteAllGames() {
         let {
             val builder = AlertDialog.Builder(it)
             builder.setMessage(R.string.are_you_sure)
             builder.apply {
                 setPositiveButton(R.string.ok
-                ) { dialog, id ->
+                ) { _, _ ->
                     viewModel.deleteAllGames()
                 }
                 setNegativeButton(R.string.no
-                ) { dialog, id ->
+                ) { _, _ ->
                     // User cancelled the dialog
                 }
             }
