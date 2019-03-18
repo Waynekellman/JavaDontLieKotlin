@@ -59,7 +59,9 @@ class MoneyActivity : AppCompatActivity() , KodeinAware {
     }
 
     fun deleteText(v: View){
-        money_amount_text.text = money_amount_text.text.substring(0, money_amount_text.text.length - 1)
+        if (money_amount_text.text.isNotBlank()) {
+            money_amount_text.text = money_amount_text.text.substring(0, money_amount_text.text.length - 1)
+        }
     }
 
     private fun updateUI() {

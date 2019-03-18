@@ -8,6 +8,6 @@
     <TextView
             android:text="@string/textview"
             android:layout_width="match_parent"
-            android:layout_height="100dp" android:id="@+id/money_log" android:gravity="center"
+            android:layout_height="wrap_content" android:id="@+id/money_log" android:gravity="center"
             android:textStyle="bold" android:textSize="24sp"/>
 </LinearLayout>
