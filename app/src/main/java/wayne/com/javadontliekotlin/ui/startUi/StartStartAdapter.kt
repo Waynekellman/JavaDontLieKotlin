@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.game_item.view.*
 import wayne.com.javadontliekotlin.R
 import wayne.com.javadontliekotlin.data.db.Game
 import wayne.com.javadontliekotlin.ui.moneyUi.MoneyActivity
-import wayne.com.javadontliekotlin.utils.IAdapter
+import wayne.com.javadontliekotlin.utils.IStartAdapter
 
-class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>(), IAdapter {
+class StartStartAdapter: RecyclerView.Adapter<StartStartAdapter.GameViewHolder>(), IStartAdapter {
 
     private val games = ArrayList<Game>()
 
@@ -55,7 +55,7 @@ class StartAdapter: RecyclerView.Adapter<StartAdapter.GameViewHolder>(), IAdapte
         return games[position]
     }
 
-    fun setList(gamesList: List<Game>) {
+    override fun setList(gamesList: List<Game>) {
         games.clear()
         games.addAll(gamesList)
         notifyDataSetChanged()
