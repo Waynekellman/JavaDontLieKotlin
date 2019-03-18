@@ -25,8 +25,8 @@ class StartActivity : AppCompatActivity(), KodeinAware {
     private val viewModel: StartViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(StartViewModel::class.java)
     }
-    private val adapter: StartAdapter =
-        StartAdapter()
+    private val adapter: StartStartAdapter =
+        StartStartAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
