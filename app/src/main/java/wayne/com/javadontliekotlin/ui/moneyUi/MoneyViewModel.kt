@@ -18,13 +18,14 @@ class MoneyViewModel constructor(private val repository: IGameRepository): ViewM
     fun delete(game: Game) = repository.delete(game)
     fun update(game: Game) = repository.insert(game)
 
-    fun calculate(amount: Long) {
-        currentGame.amount += amount.toInt()
+    fun calculate(amount: Double) {
+        currentGame.amount += amount
+        val newAmount = "%.2f".format(amount).toDouble()
         if (amount < 0) {
-            val newAmount= amount * -1
-            currentGame.log.add("Paid: $newAmount")
+            val newAmountNegative = newAmount * -1
+            currentGame.log.add("Paid: $newAmountNegative")
         } else {
-            currentGame.log.add("Received: $amount")
+            currentGame.log.add("Received: $newAmount")
         }
         update(currentGame)
     }

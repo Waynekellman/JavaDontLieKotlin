@@ -17,7 +17,7 @@ class StartViewModel(private val repository: IGameRepository) : ViewModel() {
 
     fun getAllGames() = repository.getAllGames()
 
-    fun createNewGame(gameName: String, amount: Int) {
+    fun createNewGame(gameName: String, amount: Double) {
         insert(Game(gameName = gameName, amount = amount))
         newGame = true
     }

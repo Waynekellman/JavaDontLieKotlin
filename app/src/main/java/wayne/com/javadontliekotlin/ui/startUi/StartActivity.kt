@@ -35,7 +35,7 @@ class StartActivity : AppCompatActivity(), KodeinAware {
         initializeUI()
         new_game.setOnClickListener {
             if (new_game_name.text.isNotEmpty() && money_amount_start.text.isNotEmpty()) {
-                viewModel.createNewGame(new_game_name.text.toString(), money_amount_start.text.toString().toInt())
+                viewModel.createNewGame(new_game_name.text.toString(), money_amount_start.text.toString().toDouble())
             }
         }
     }

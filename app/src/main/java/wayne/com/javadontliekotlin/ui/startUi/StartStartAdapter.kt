@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.game_item.view.*
 import wayne.com.javadontliekotlin.R
@@ -26,7 +27,9 @@ class StartStartAdapter: RecyclerView.Adapter<StartStartAdapter.GameViewHolder>(
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         holder.name.text = games[position].gameName
-        holder.amount.text = games[position].amount.toString()
+        val amount = "%.2f".format(games[position].amount)
+        holder.amount.text = amount
+        setTextColor(position, holder)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MoneyActivity::class.java)
             intent.putExtra("gameId", games[position].id)
@@ -34,6 +37,17 @@ class StartStartAdapter: RecyclerView.Adapter<StartStartAdapter.GameViewHolder>(
 
         }
 
+    }
+
+    private fun setTextColor(
+        position: Int,
+        holder: GameViewHolder
+    ) {
+        when {
+            games[position].amount < 0 -> holder.amount.setTextColor(ContextCompat.getColor(holder.amount.context, R.color.red))
+            games[position].amount > 0 -> holder.amount.setTextColor(ContextCompat.getColor(holder.amount.context, R.color.green))
+            else -> holder.amount.setTextColor(ContextCompat.getColor(holder.amount.context, R.color.black))
+        }
     }
 
 

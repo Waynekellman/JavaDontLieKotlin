@@ -11,6 +11,7 @@ import wayne.com.javadontliekotlin.utils.IMoneyAdapter
 
 class MoneyAdapter: RecyclerView.Adapter<MoneyAdapter.MoneyViewHolder>(), IMoneyAdapter {
 
+    //TODO: Make payments log list smaller in UI as the list goes down. Show top (most recent) payment as biggest
     private val logArray = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoneyViewHolder {

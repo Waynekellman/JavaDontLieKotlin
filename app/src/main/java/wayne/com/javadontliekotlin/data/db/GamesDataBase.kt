@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import wayne.com.javadontliekotlin.utils.GsonTypeConverter
 
 
-@Database(entities = arrayOf(Game::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Game::class), version = 2, exportSchema = false)
 @TypeConverters(GsonTypeConverter::class)
 abstract class GamesDataBase : RoomDatabase(), IGamesDatabase {
     abstract override fun gamesDao() : GamesDao
