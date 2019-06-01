@@ -45,7 +45,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/start_amount"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:background="@drawable/rounded_edit_text"

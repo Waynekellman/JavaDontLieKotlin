@@ -27,4 +27,6 @@
     <string name="clear">Clear</string>
     <string name="textview">TextView</string>
     <string name="decimal"><![CDATA[.]]></string>
+    <string name="show_history">show history</string>
+    <string name="hide">X</string>
 </resources>

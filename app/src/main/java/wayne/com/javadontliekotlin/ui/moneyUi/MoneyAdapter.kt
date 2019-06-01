@@ -11,11 +11,15 @@ import wayne.com.javadontliekotlin.utils.IMoneyAdapter
 
 class MoneyAdapter: RecyclerView.Adapter<MoneyAdapter.MoneyViewHolder>(), IMoneyAdapter {
 
-    //TODO: Make payments log list smaller in UI as the list goes down. Show top (most recent) payment as biggest
     private val logArray = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoneyViewHolder {
         return MoneyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.money_item, parent, false))
+    }
+
+    @Suppress("RedundantOverride")
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +32,8 @@ class MoneyAdapter: RecyclerView.Adapter<MoneyAdapter.MoneyViewHolder>(), IMoney
 
     override fun setList(log: ArrayList<String>) {
         logArray.clear()
-        log.reverse()
+        if (log.isEmpty()) logArray.add("No history yet")
+        else log.reverse()
         logArray.addAll(log)
         notifyDataSetChanged()
     }

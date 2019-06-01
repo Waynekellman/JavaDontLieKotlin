@@ -1,12 +1,13 @@
 package wayne.com.javadontliekotlin.utils
 
-import android.content.Context
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import wayne.com.javadontliekotlin.ui.startUi.StartViewModel
 
 class DragManageAdapter(
-    private var startAdapter: IStartAdapter, context: Context, dragDirs: Int, swipeDirs: Int,
+    private var startAdapter: IStartAdapter,
+    dragDirs: Int,
+    swipeDirs: Int,
     private val viewModel: StartViewModel
 ) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs)
 {

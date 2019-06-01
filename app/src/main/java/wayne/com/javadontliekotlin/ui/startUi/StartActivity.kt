@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -34,10 +35,24 @@ class StartActivity : AppCompatActivity(), KodeinAware {
 
         initializeUI()
         new_game.setOnClickListener {
-            if (new_game_name.text.isNotEmpty() && money_amount_start.text.isNotEmpty()) {
-                viewModel.createNewGame(new_game_name.text.toString(), money_amount_start.text.toString().toDouble())
+            if (new_game_name.text.isNotEmpty()) {
+                if (money_amount_start.text.contains('.')){
+                    val decimalPlaces = money_amount_start.text.toString().substringAfter('.').length
+                    if (decimalPlaces > 2) {
+                        decimalPlacesToast()
+                        return@setOnClickListener
+                    }
+                }
+
+                viewModel.createNewGame(new_game_name.text.toString(), money_amount_start.text?.toString()?.toDoubleOrNull() ?: 0.00)
+                money_amount_start.text.clear()
+                new_game_name.text.clear()
             }
         }
+    }
+
+    private fun decimalPlacesToast() {
+        Toast.makeText(this,"Only two decimal places please", Toast.LENGTH_LONG).show()
     }
 
     private fun initializeUI() {
@@ -54,7 +69,7 @@ class StartActivity : AppCompatActivity(), KodeinAware {
             adapter.setList(gamesList)
         })
 
-        val callback = DragManageAdapter(adapter, this, 0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT), viewModel)
+        val callback = DragManageAdapter(adapter, 0, ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT), viewModel)
         val helper = ItemTouchHelper(callback)
         helper.attachToRecyclerView(recyclerView)
     }
@@ -84,6 +99,8 @@ class StartActivity : AppCompatActivity(), KodeinAware {
                 setPositiveButton(R.string.ok
                 ) { _, _ ->
                     viewModel.deleteAllGames()
+                    new_game_name.text.clear()
+                    money_amount_start.text.clear()
                 }
                 setNegativeButton(R.string.no
                 ) { _, _ ->
